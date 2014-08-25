@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+   
+<package name="default" extends="struts-default">
+   
+   
+   	  <action name="index">
+    	<result>/index.jsp</result>
+  	  </action>
+  	  
+  	  <action name="CreateBranch"> 
+           <result>/CreateBranch.jsp</result>
+          
+      </action>
+      
+      <action name="CreateBranchAction" class="POS.Branch" method="Create"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="UpdateBranch"> 
+           <result>/UpdateBranch.jsp</result>
+          
+      </action>
+      
+      <action name="UpdateBranchAction" class="POS.Branch" method="Update"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="DeleteBranch"> 
+           <result>/DeleteBranch.jsp</result>
+          
+      </action>
+      
+      <action name="DeleteBranchAction" class="POS.Branch" method="Delete"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="BranchList" class="POS.Branch" method="BranchList"> 
+           <result name="success">/BranchList.jsp</result>
+      </action>
+      
+      <action name="AsssignBranchManager"> 
+           <result>/AssignBranchManager.jsp</result>
+          
+      </action>
+      
+      <action name="AssignBranchManagerAction" class="POS.Branch" method="AssignBranchManager"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="Logout" class="POS.Logout" method="logout"> 
+           <result name="success">/index.jsp</result>
+      </action>
+      
+</package>
+</struts>

@@ -1,0 +1,143 @@
+
+body
+{
+background-color:#FFDAB9;
+}
+h1
+{
+color:#708090;
+font-family:"Times New Roman";
+text-align:center;
+}
+p
+{
+font-family:"Times New Roman";
+font-size:20px;
+}
+
+a {text-decoration:none;} 
+
+a:link {color:#4169E1;}      /* unvisited link */
+a:visited {color:#4169E1;}  /* visited link */
+a:hover {color:#FFFFFF;}  /* mouse over link */
+a:active {color:#4169E1;}  /* selected link */ 
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:none;}
+
+a:link {background-color:#FFEBCD;}
+a:visited {background-color:#FFEBCD;}
+a:hover {background-color:#000000;}
+a:active {background-color:#FFEBCD;} 
+
+#body{
+background-color:#F5F5DC;
+height:840px;
+width:850px;
+float:left;
+font-size:20px;
+padding: 8px 10px;
+}
+
+#header{
+background-color:#5F9EA0;
+text-align: center;
+height:65px;
+width:850px;
+float:left;
+font-size:20px;
+padding: 0px 10px;
+}
+
+#header2{
+height: 80px; 
+width: 100%; 
+background-color: #5F9EA0;
+padding:0px 10px;
+}
+
+#left{
+width: 47%; 
+float: left; 
+padding: 10px 10px;
+}
+
+#right{
+width: 48%; 
+float: left; 
+padding: 10px 0px;
+}
+
+#unsuccessful{
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: #dddddd;
+    width: 350px;
+    height: 200px;
+    border-radius: 40px;
+    color: red;
+    align: center;
+}
+
+#successful{
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: #dddddd;
+    width: 350px;
+    height: 200px;
+    border-radius: 40px;
+    color: green;
+    align: center;
+}
+
+#select1{
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: #dddddd;
+    width: 350px;
+    height: 250px;
+    border-radius: 40px;
+    color:black;
+    align: center;
+}
+
+#select2{
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: #dddddd;
+    width: 450px;
+    height: 280px;
+    border-radius: 40px;
+    color:black;
+    align: center;
+}
+
+#select3{
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: #dddddd;
+    width: 300px;
+    height: 180px;
+    border-radius: 40px;
+    color:black;
+    align: center;
+}
+#select4{
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: #dddddd;
+    width: 350px;
+    height: 400px;
+    border-radius: 40px;
+    color:black;
+    align: center;
+}
+
+#search {
+	width: 280px;
+	height: 50px;
+	padding: 0px 0px 0px 10px;
+	background: url(images/img08.jpg) no-repeat 20px 11px; 
+}

@@ -1,0 +1,112 @@
+body
+{
+background-color:#dddddd;
+}
+h1
+{
+color:#000;
+font-family:"Times New Roman";
+text-align:center;
+}
+p
+{
+font-family:"Times New Roman";
+font-size:20px;
+}
+
+a {text-decoration:none;} 
+
+a:link {color:#43b81a;}      /* unvisited link */
+a:visited {color:#6bde2d;}  /* visited link */
+a:hover {color:#43b81a;}  /* mouse over link */
+a:active {color:#6bde2d;}  /* selected link */ 
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:none;}
+
+a:link {background-color:#FFEBCD;}
+a:visited {background-color:#FFEBCD;}
+a:hover {background-color:#000000;}
+a:active {background-color:#FFEBCD;} 
+
+table
+{
+width:100%;
+}
+td
+{
+height:50px;
+} 
+td
+{
+text-align:center;
+}
+.my-dropdown-menu {
+		margin: 0 auto;
+		padding: 0 auto;
+		width: 1180px;
+
+	}
+	.my-dropdown-menu li {
+		list-style: none;
+		background-color: #fff;
+		float: left;
+	}
+	.my-dropdown-menu li a {
+		margin: 0;
+		padding: 7px 10px;
+		color: #fff;
+		text-decoration: none;
+		display: block;
+		background-color: #6bde2d;
+	}
+	/* style main menu when hovered */
+	.my-dropdown-menu li a:hover {
+		background-color: #444;
+		color: #43b81a;
+	}
+	/*  
+	 * style the sub menu
+	 */
+	.my-dropdown-menu li ul {
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		display: none;
+	}
+	.my-dropdown-menu li ul li {
+		display: block;
+		float: none; 
+	}
+	.my-dropdown-menu li ul li a {
+		padding-right: 20px;
+	}
+	/* style sub menu when hovered */
+	.my-dropdown-menu li ul li a:hover {
+		background-color: #444;
+		color: #43b81a;
+	}
+
+
+	/* display submenu when main menu is hoverd */
+	.my-dropdown-menu li:hover ul {
+		display: block;
+	}
+	.my-dropdown-menu li:hover > a {
+		background-color: #444;
+	}
+
+
+
+.titleblock {
+padding:6em; margin:0; text-align:left;
+width: 85%;
+background-image:url(images/JU01.jpg);  background-position:center left;}
+
+
+
+
+
+
