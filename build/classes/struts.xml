@@ -92,6 +92,37 @@
            <result name="success">/MainManager.jsp</result>
       </action>
       
+       <action name="CreateSupplier"> 
+           <result>/CreateSupplier.jsp</result>
+          
+      </action>
+      
+      <action name="CreateSupplierAction" class="POS.Supplier" method="Create"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="UpdateSupplier"> 
+           <result>/UpdateSupplier.jsp</result>
+          
+      </action>
+      
+      <action name="UpdateSupplierAction" class="POS.Supplier" method="Update"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="DeleteSupplier"> 
+           <result>/DeleteSupplier.jsp</result>
+          
+      </action>
+      
+      <action name="DeleteSupplierAction" class="POS.Supplier" method="Delete"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="SupplierList" class="POS.Supplier" method="SupplierList"> 
+           <result name="success">/SupplierList.jsp</result>
+      </action>
+      
       <action name="Logout" class="POS.Logout" method="logout"> 
            <result name="success">/index.jsp</result>
       </action>

@@ -33,6 +33,15 @@
 				<li><a href="<s:url action="AsssignBranch" />">Assign
 						Branch</a></li>
 			</ul></li>	
+			
+		<li><a href="">Supplier</a> <!-- sub menu for account -->
+			<ul>
+				<li><a href="<s:url action="CreateSupplier" />">Create Supplier</a></li>
+				<li><a href="<s:url action="UpdateSupplier" />">Update Supplier</a></li>
+				<li><a href="<s:url action="DeleteSupplier" />">Delete Supplier</a></li>
+				<li><a href="<s:url action="SupplierList" />">Supplier List</a></li>
+				
+			</ul></li>
 
 		<li><a href="<s:url action="Logout" />">Logout</a></li>
 

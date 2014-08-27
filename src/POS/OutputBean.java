@@ -10,6 +10,8 @@ public class OutputBean {
 	private int EmployeeID;
 	private int Salary;
 	private String Type;
+	private int SupplierID;
+	private String Description;
 	
 	public String getName() {
 		return Name;
@@ -58,6 +60,18 @@ public class OutputBean {
 	}
 	public void setType(String type) {
 		Type = type;
+	}
+	public int getSupplierID() {
+		return SupplierID;
+	}
+	public void setSupplierID(int supplierID) {
+		SupplierID = supplierID;
+	}
+	public String getDescription() {
+		return Description;
+	}
+	public void setDescription(String description) {
+		Description = description;
 	}
 
 	
