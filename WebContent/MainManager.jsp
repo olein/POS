@@ -17,25 +17,7 @@ response.setHeader("Cache-Control","no-store"); // HTTP 1.1
 response.setDateHeader("Expires", 0);
 %>
 
-
-
-
-	<ul class="my-dropdown-menu">
-		<li><a href="MainManager.jsp">Home</a></li>
-		<li><a href="">Branch</a> <!-- sub menu for account -->
-			<ul>
-				<li><a href="<s:url action="CreateBranch" />">Create Branch</a></li>
-				<li><a href="<s:url action="UpdateBranch" />">Update Branch</a></li>
-				<li><a href="<s:url action="DeleteBranch" />">Delete Branch</a></li>
-				<li><a href="<s:url action="BranchList" />">Branch List</a></li>
-				<li><a href="<s:url action="AsssignBranchManager" />">Assign
-						Branch Manager</a></li>
-			</ul></li>
-
-		<li><a href="<s:url action="Logout" />">Logout</a></li>
-
-	</ul>
-
+<%@ include file="/Header.jsp" %>
 
 	<br />
 	<br />

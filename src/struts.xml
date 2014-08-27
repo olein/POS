@@ -52,6 +52,46 @@
            <result name="success">/MainManager.jsp</result>
       </action>
       
+      <action name="CreateEmployee"> 
+           <result>/CreateEmployee.jsp</result>
+          
+      </action>
+      
+      <action name="CreateEmployeeAction" class="POS.Employee" method="Create"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="UpdateEmployee"> 
+           <result>/UpdateEmployee.jsp</result>
+          
+      </action>
+      
+      <action name="UpdateEmployeeAction" class="POS.Employee" method="Update"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="DeleteEmployee"> 
+           <result>/DeleteEmployee.jsp</result>
+          
+      </action>
+      
+      <action name="DeleteEmployeeAction" class="POS.Employee" method="Delete"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="EmployeeList" class="POS.Employee" method="EmployeeList"> 
+           <result name="success">/EmployeeList.jsp</result>
+      </action>
+      
+      <action name="AsssignBranch"> 
+           <result>/AssignBranch.jsp</result>
+          
+      </action>
+      
+      <action name="AssignBranchAction" class="POS.Employee" method="AssignBranch"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
       <action name="Logout" class="POS.Logout" method="logout"> 
            <result name="success">/index.jsp</result>
       </action>

@@ -25,12 +25,14 @@ response.setDateHeader("Expires", 0);
 	<br />
 	
 	<table border="0" align="left" width=30%>
-	<tr><td>Branch ID</td><td>Name</td><td>Location</td><td>Manager ID</td></tr>
+	<tr><td>Employee ID</td><td>Branch ID</td><td>Name</td><td>Address</td><td>Salary</td><td>Type</td></tr>
 	<s:iterator value="messages">
-	<tr><td><s:property value="BranchID"/></td>
+	<tr><td><s:property value="EmployeeID"/></td>
+	<td><s:property value="BranchID"/></td>
 	<td><s:property value="Name"/></td>
-	<td><s:property value="Location"/></td>
-	<td><s:property value="ManagerID"/></td></tr>
+	<td><s:property value="Address"/></td>
+	<td><s:property value="Salary"/></td>
+	<td><s:property value="Type"/></td></tr>
 	</s:iterator>
 	</table>
 	

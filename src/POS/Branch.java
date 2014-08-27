@@ -12,7 +12,7 @@ public class Branch {
 	private int ManagerID;
 	private int BranchID;
 	
-	public Vector messages = new Vector();
+	public Vector<OutputBean> messages = new Vector<OutputBean>();
 	
 	public String Create() throws SQLException
 	{
@@ -94,6 +94,16 @@ public class Branch {
 				{
 					ManagerID = rs.getInt(4);
 				}
+				else if(ManagerID!=0)
+				{
+					PreparedStatement preparedStatement1 = conn
+							.prepareStatement("update employee set BranchID=? where EmployeeID=?");
+					// Parameters start with 1
+					int id = rs.getInt(4);
+					preparedStatement1.setInt(1, 0);
+					preparedStatement1.setInt(2, id);
+					preparedStatement1.executeUpdate();
+				}
 				
 				PreparedStatement preparedStatement1 = conn
 						.prepareStatement("update branch set Name=?, Location=?, ManagerID=? where BranchID=?");
@@ -163,12 +173,12 @@ public class Branch {
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next())
 			{
-				BranchID = rs.getInt(1);
-				Name = rs.getString(2);
-				Location = rs.getString(3);
-				ManagerID = rs.getInt(4);
-				
-				messages.add(new OutputBean(BranchID,Name,Location,ManagerID));
+				OutputBean bean = new OutputBean();
+				bean.setBranchID(rs.getInt(1));
+				bean.setLocation(rs.getString(3));
+				bean.setName(rs.getString(2));
+				bean.setManagerID(rs.getInt(4));
+				messages.add(bean);
 			}
 		
 		return "success";
@@ -185,6 +195,13 @@ public class Branch {
 		preparedStatement1.setInt(1, ManagerID);
 		preparedStatement1.setInt(2, BranchID);
 		preparedStatement1.executeUpdate();
+		
+		PreparedStatement preparedStatement = conn
+				.prepareStatement("update employee set BranchID=? where EmployeeID=?");
+		// Parameters start with 1
+		preparedStatement.setInt(1, BranchID);
+		preparedStatement.setInt(2, ManagerID);
+		preparedStatement.executeUpdate();
 		conn.close();
 		
 		return "success";
