@@ -12,6 +12,8 @@ public class OutputBean {
 	private String Type;
 	private int SupplierID;
 	private String Description;
+	private int ProductID;
+	private int Price;
 	
 	public String getName() {
 		return Name;
@@ -72,6 +74,18 @@ public class OutputBean {
 	}
 	public void setDescription(String description) {
 		Description = description;
+	}
+	public int getProductID() {
+		return ProductID;
+	}
+	public void setProductID(int productID) {
+		ProductID = productID;
+	}
+	public int getPrice() {
+		return Price;
+	}
+	public void setPrice(int price) {
+		Price = price;
 	}
 
 	

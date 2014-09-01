@@ -11,7 +11,7 @@ public class Branch {
 	private String Location;
 	private int ManagerID;
 	private int BranchID;
-	
+	private String Type;
 	public Vector<OutputBean> messages = new Vector<OutputBean>();
 	
 	public String Create() throws SQLException
@@ -49,10 +49,10 @@ public class Branch {
 	      stmt.executeUpdate(sql);
 	      
 	      sql = "CREATE TABLE "+Name+"_Transaction_supply " +
-                  "(SupplyID INTEGER not NULL, " +
-	    		  " Description varchar(256), " + 
-                  " Date DATE, " + 
-                  " PRIMARY KEY ( SupplyID ))"; 
+                  "(TransactionID INTEGER not NULL, " +
+                   "ProductID INTEGER not NULL, " +
+	    		  " Quantity INTEGER not null " + 
+                  " )"; 
 
 	     stmt.executeUpdate(sql);
 	     
@@ -65,7 +65,7 @@ public class Branch {
 
 			preparedStatement.executeUpdate();
 			conn.close();
-		
+		setType("Main manager");
 		return "success";
 	}
 	
@@ -117,6 +117,7 @@ public class Branch {
 				
 			}
 			conn.close();
+			setType("Main manager");
 		return "success";
 	}
 	
@@ -155,7 +156,7 @@ public class Branch {
 	    
 	    sql = "drop table "+Name+"_transaction_supply;"; 
 	    stmt.executeUpdate(sql);
-	    
+	    setType("Main manager");
 	    return "success";
 
 	}
@@ -203,7 +204,7 @@ public class Branch {
 		preparedStatement.setInt(2, ManagerID);
 		preparedStatement.executeUpdate();
 		conn.close();
-		
+		setType("Main manager");
 		return "success";
 	}
 	
@@ -238,6 +239,14 @@ public class Branch {
 
 	public void setMessages(Vector Messages) {
 		messages = Messages;
+	}
+
+	public String getType() {
+		return Type;
+	}
+
+	public void setType(String type) {
+		Type = type;
 	}
 
 }

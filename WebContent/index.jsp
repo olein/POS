@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page session="false"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,8 +29,8 @@ response.setDateHeader("Expires", 0);
  <h3 class="login-button">Login
 <s:form action="Login">
 
-				<s:textfield name="name" label="Name" />
-				<s:password name="password" label="Password" />
+				<s:textfield name="Name" label="Name" />
+				<s:password name="Password" label="Password" />
 
 				<s:submit label="Login" />
 

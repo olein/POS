@@ -21,7 +21,7 @@ response.setDateHeader("Expires", 0);
 
 	<br />
 	<br />
-	<h1>Welcome Manager</h1>
+	<h1>Welcome <%= Name %></h1>
 	<br />
 </body>
 </html>

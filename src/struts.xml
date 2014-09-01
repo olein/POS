@@ -12,6 +12,12 @@
     	<result>/index.jsp</result>
   	  </action>
   	  
+  	  <action name="Login" class="POS.Login" method="Login"> 
+           <result name="Main manager">/MainManager.jsp</result>
+           <result name="Manager">/Manager.jsp</result>
+           <result name="failure">/index.jsp</result>
+      </action>
+  	  
   	  <action name="CreateBranch"> 
            <result>/CreateBranch.jsp</result>
           
@@ -121,6 +127,64 @@
       
       <action name="SupplierList" class="POS.Supplier" method="SupplierList"> 
            <result name="success">/SupplierList.jsp</result>
+      </action>
+      
+      <action name="CreateProduct"> 
+           <result>/CreateProduct.jsp</result>
+          
+      </action>
+      
+      <action name="CreateProductAction" class="POS.Product" method="Create"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="UpdateProduct"> 
+           <result>/UpdateProduct.jsp</result>
+          
+      </action>
+      
+      <action name="UpdateProductAction" class="POS.Product" method="Update"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="DeleteProduct"> 
+           <result>/DeleteProduct.jsp</result>
+      </action>
+      
+      <action name="DeleteProductAction" class="POS.Product" method="Delete"> 
+           <result name="success">/MainManager.jsp</result>
+      </action>
+      
+      <action name="ProductList" class="POS.Product" method="ProductList"> 
+           <result name="success">/ProductList.jsp</result>
+      </action>
+      
+      <action name="Supply"> 
+           <result>/Supply.jsp</result>
+      </action>
+      
+      <action name="SupplyAction" class="POS.Supply" method="SupplyRegistration"> 
+           <result name="success">/SupplyProduct.jsp</result>
+      </action>
+      
+      <action name="SupplyProductAction" class="POS.Supply" method="SupplyProduct"> 
+           <result name="success">/SupplyProduct.jsp</result>
+      </action>
+      
+      <action name="CalculateBill" class="POS.Supply" method="CalculateBill"> 
+           <result name="success">/ShowBill.jsp</result>
+      </action>
+      
+      <action name="BranchRefund"> 
+           <result>/BranchRefund.jsp</result>
+      </action>
+      
+      <action name="BranchRefundAction" class="POS.Supply" method="BranchRefund"> 
+           <result name="success">/BranchRefundProduct.jsp</result>
+      </action>
+      
+      <action name="BranchRefundProduct" class="POS.Supply" method="BranchRefundProduct"> 
+           <result name="success">/BranchRefundProduct.jsp</result>
       </action>
       
       <action name="Logout" class="POS.Logout" method="logout"> 

@@ -30,7 +30,7 @@ public class Employee {
 
 		preparedStatement.executeUpdate();
 		conn.close();
-	
+		setType("Main manager");
 		return "success";
 	}
 	
@@ -81,7 +81,7 @@ public class Employee {
 			
 		}
 		conn.close();
-		
+		setType("Main manager");
 		return "success";
 	}
 	
@@ -90,8 +90,7 @@ public class Employee {
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
 		
-		Statement stmt;
-		stmt = conn.createStatement();
+		
 		
 		PreparedStatement preparedStatement = conn
 				.prepareStatement("select * from employee where EmployeeID=?");
@@ -119,7 +118,7 @@ public class Employee {
 		preparedStatement1.setInt(1, EmployeeID);
 
 		preparedStatement1.executeUpdate();
-		
+		setType("Main manager");
 		return "success";
 	}
 	
@@ -147,6 +146,7 @@ public class Employee {
 				
 			}
 			conn.close();
+			setType("Main manager");
 		return "success";
 	}
 	
@@ -181,6 +181,7 @@ public class Employee {
 		preparedStatement1.setInt(1, BranchID);
 		preparedStatement1.executeUpdate();
 		conn.close();
+		setType("Main manager");
 		return "success";
 	}
 	public String getName() {
