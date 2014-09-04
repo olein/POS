@@ -118,6 +118,12 @@ public class Supply {
 		while(rs.next())
 		{
 			TotalBill = TotalBill + rs.getInt(4);
+			preparedStatement11 = conn
+					.prepareStatement("update supply set TotalAmount=? where TransactionID=?");
+			// Parameters start with 1
+			preparedStatement11.setInt(1, TotalBill);
+			preparedStatement11.setInt(2, TransactionID);
+			preparedStatement11.executeUpdate();
 		}
 		return "success"; 	
 	}

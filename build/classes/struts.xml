@@ -187,6 +187,38 @@
            <result name="success">/BranchRefundProduct.jsp</result>
       </action>
       
+      <action name="Sales"> 
+           <result>/Sales.jsp</result>
+      </action>
+      
+      <action name="SalesAction" class="POS.Sales" method="SalesRegistration"> 
+           <result name="success">/SalesProduct.jsp</result>
+      </action>
+      
+      <action name="SalesProductAction" class="POS.Sales" method="SalesProduct"> 
+           <result name="success">/SalesProduct.jsp</result>
+      </action>
+      
+      <action name="CustomerCalculateBill" class="POS.Sales" method="CalculateBill"> 
+           <result name="success">/CustomerShowBill.jsp</result>
+      </action>
+      
+      <action name="ReportMain"> 
+           <result>/ReportMain.jsp</result>
+      </action>
+      
+      <action name="ReportMainAction" class="POS.Report" method="ReportMain"> 
+           <result name="success">/ShowReportMain.jsp</result>
+      </action>
+      
+      <action name="ReportBranch"> 
+           <result>/ReportBranch.jsp</result>
+      </action>
+      
+      <action name="ReportBranchAction" class="POS.Report" method="ReportBranch"> 
+           <result name="success">/ShowReportBranch.jsp</result>
+      </action>
+      
       <action name="Logout" class="POS.Logout" method="logout"> 
            <result name="success">/index.jsp</result>
       </action>

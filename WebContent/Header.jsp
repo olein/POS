@@ -59,7 +59,7 @@
 			<ul>
 				<li><a href="<s:url action="Supply" />">Supply</a></li>
 				<li><a href="<s:url action="BranchRefund" />">Branch Refund</a></li>
-				<li><a href="<s:url action="DeleteProduct" />">Delete Product</a></li>
+				<li><a href="<s:url action="ReportMain" />">Generate Report</a></li>
 				<li><a href="<s:url action="ProductList" />">Product List</a></li>
 				
 			</ul></li>
@@ -97,7 +97,7 @@
 		<li><a href="">Transaction</a> <!-- sub menu for account -->
 			<ul>
 				<li><a href="<s:url action="Supply" />">Supply</a></li>
-				
+				<li><a href="<s:url action="Sales" />">Sales</a></li>
 			</ul></li>
 
 		<li><a href="<s:url action="Logout" />">Logout</a></li>

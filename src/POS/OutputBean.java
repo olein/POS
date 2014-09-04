@@ -1,5 +1,7 @@
 package POS;
 
+import java.sql.Date;
+
 public class OutputBean {
 	
 	private String Name;
@@ -14,6 +16,10 @@ public class OutputBean {
 	private String Description;
 	private int ProductID;
 	private int Price;
+	private Date date;
+	private int TransactionID;
+	private int TotalAmount;
+	private int Quantity;
 	
 	public String getName() {
 		return Name;
@@ -86,6 +92,30 @@ public class OutputBean {
 	}
 	public void setPrice(int price) {
 		Price = price;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public int getTransactionID() {
+		return TransactionID;
+	}
+	public void setTransactionID(int transactionID) {
+		TransactionID = transactionID;
+	}
+	public int getTotalAmount() {
+		return TotalAmount;
+	}
+	public void setTotalAmount(int totalAmount) {
+		TotalAmount = totalAmount;
+	}
+	public int getQuantity() {
+		return Quantity;
+	}
+	public void setQuantity(int quantity) {
+		Quantity = quantity;
 	}
 
 	
