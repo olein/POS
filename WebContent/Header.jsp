@@ -60,8 +60,10 @@
 				<li><a href="<s:url action="Supply" />">Supply</a></li>
 				<li><a href="<s:url action="BranchRefund" />">Branch Refund</a></li>
 				<li><a href="<s:url action="ReportMain" />">Generate Report</a></li>
-				<li><a href="<s:url action="ProductList" />">Product List</a></li>
-				
+				<li><a href="<s:url action="TimeRangeMain" />">Time Range</a></li>
+				<li><a href="<s:url action="TimeRangeBranch" />">Time Range Branch</a></li>
+				<li><a href="<s:url action="ProductReport" />">Product Report</a></li>
+				<li><a href="<s:url action="EmployeeReportCheck" />">Employee Report</a></li>
 			</ul></li>
 
 		<li><a href="<s:url action="Logout" />">Logout</a></li>
@@ -98,6 +100,7 @@
 			<ul>
 				<li><a href="<s:url action="Supply" />">Supply</a></li>
 				<li><a href="<s:url action="Sales" />">Sales</a></li>
+				<li><a href="<s:url action="ReportEmployee" />">Report Employee</a></li>
 			</ul></li>
 
 		<li><a href="<s:url action="Logout" />">Logout</a></li>

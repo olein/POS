@@ -20,6 +20,8 @@ public class OutputBean {
 	private int TransactionID;
 	private int TotalAmount;
 	private int Quantity;
+	private int TotalPrice;
+	private String Report;
 	
 	public String getName() {
 		return Name;
@@ -116,6 +118,18 @@ public class OutputBean {
 	}
 	public void setQuantity(int quantity) {
 		Quantity = quantity;
+	}
+	public int getTotalPrice() {
+		return TotalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		TotalPrice = totalPrice;
+	}
+	public String getReport() {
+		return Report;
+	}
+	public void setReport(String report) {
+		Report = report;
 	}
 
 	

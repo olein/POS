@@ -219,6 +219,42 @@
            <result name="success">/ShowReportBranch.jsp</result>
       </action>
       
+      <action name="TimeRangeMain"> 
+           <result>/TimeRangeMain.jsp</result>
+      </action>
+      
+      <action name="TimeRangeMainAction" class="POS.Report" method="TimeRangeMain"> 
+           <result name="success">/ShowReportTimeRangeMain.jsp</result>
+      </action>
+      
+      <action name="TimeRangeBranch"> 
+           <result>/TimeRangeBranch.jsp</result>
+      </action>
+      
+      <action name="TimeRangeBranchAction" class="POS.Report" method="TimeRangeBranch"> 
+           <result name="success">/ShowReportTimeRangeBranch.jsp</result>
+      </action>
+      
+      <action name="ProductReport"> 
+           <result>/ProductReport.jsp</result>
+      </action>
+      
+      <action name="ProductReportAction" class="POS.Report" method="ProductReport"> 
+           <result name="success">/ShowProductReport.jsp</result>
+      </action>
+      
+      <action name="ReportEmployee"> 
+           <result>/ReportEmployee.jsp</result>
+      </action>
+      
+      <action name="ReportEmployeeAction" class="POS.Report" method="ReportEmployee"> 
+           <result name="success">/Manager.jsp</result>
+      </action>
+      
+      <action name="EmployeeReportCheck" class="POS.Report" method="EmployeeReportCheck"> 
+           <result name="success">/EmployeeReportCheck.jsp</result>
+      </action>
+      
       <action name="Logout" class="POS.Logout" method="logout"> 
            <result name="success">/index.jsp</result>
       </action>
