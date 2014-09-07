@@ -18,9 +18,10 @@
 <div id="select1">
  <b>Please Enter required information:</b><br/><br/>
  
- <s:form action = "SalesAction">
+ <s:form action = "BranchRefundDetailAction">
 
-  	  <s:textfield name="EmployeeID"  label ="Employee ID"/>  	  
+  	  <s:textfield name="BranchName"  label ="Branch Name"/>
+  	  
       <s:submit/>
 
  </s:form>

@@ -10,7 +10,7 @@
 	href="<s:url value="style_home.css"/>" />
 </head>
 <body>
-	<% request.getSession().invalidate();%>
+	
 	<%
 response.setHeader("Pragma","no-cache"); // HTTP 1.0
 response.setHeader("Cache-Control","no-store"); // HTTP 1.1
@@ -21,7 +21,7 @@ response.setDateHeader("Expires", 0);
 
 	<br />
 	<br />
-	<h1>Welcome Manager</h1>
+	<h1>Welcome Main Manager</h1>
 	<br />
 </body>
 </html>

@@ -21,7 +21,8 @@ public class Branch {
 		
 		Statement stmt;
 		stmt = conn.createStatement();
-	      
+		try{
+	      conn.setAutoCommit(false);
 	      String sql = "CREATE TABLE "+Name+"_Transaction_sales " +
 	                   "(TransactionID INTEGER not NULL, " +
 	                   " EmployeeID INTEGER, " + 
@@ -64,16 +65,32 @@ public class Branch {
 			preparedStatement.setInt(3, ManagerID);
 
 			preparedStatement.executeUpdate();
+			conn.commit();
 			conn.close();
 		setType("Main manager");
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String Update() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try{
+		      conn.setAutoCommit(false);
 		 PreparedStatement preparedStatement = conn
 					.prepareStatement("select * from branch where BranchID=?");
 			// Parameters start with 1
@@ -116,15 +133,33 @@ public class Branch {
 			    preparedStatement1.executeUpdate();
 				
 			}
+			conn.commit();
 			conn.close();
 			setType("Main manager");
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String Delete() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
+		try
+		{
+		conn.setAutoCommit(false);	
 		
 		Statement stmt;
 		stmt = conn.createStatement();
@@ -156,8 +191,23 @@ public class Branch {
 	    
 	    sql = "drop table "+Name+"_transaction_supply;"; 
 	    stmt.executeUpdate(sql);
+	    conn.commit();
 	    setType("Main manager");
 	    return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 
 	}
 	
@@ -189,7 +239,8 @@ public class Branch {
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try{
+		conn.setAutoCommit(false);		
 		PreparedStatement preparedStatement1 = conn
 					.prepareStatement("update branch set ManagerID=? where BranchID=?");
 			// Parameters start with 1
@@ -203,9 +254,24 @@ public class Branch {
 		preparedStatement.setInt(1, BranchID);
 		preparedStatement.setInt(2, ManagerID);
 		preparedStatement.executeUpdate();
+		conn.commit();
 		conn.close();
 		setType("Main manager");
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String getName() {

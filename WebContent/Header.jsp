@@ -52,18 +52,27 @@
 				<li><a href="<s:url action="UpdateProduct" />">Update Product</a></li>
 				<li><a href="<s:url action="DeleteProduct" />">Delete Product</a></li>
 				<li><a href="<s:url action="ProductList" />">Product List</a></li>
-				
+				<li><a href="<s:url action="StorageMain" />">Storage Main</a></li>
+				<li><a href="<s:url action="StorageBranch" />">Storage Branch</a></li>
 			</ul></li>
 			
 		<li><a href="">Transaction</a> <!-- sub menu for account -->
 			<ul>
 				<li><a href="<s:url action="Supply" />">Supply</a></li>
+				<li><a href="<s:url action="SupplyDetail" />">Supply Detail</a></li>
 				<li><a href="<s:url action="BranchRefund" />">Branch Refund</a></li>
+				<li><a href="<s:url action="BranchRefundDetail" />">Branch Refund Detail</a></li>
+				<li><a href="<s:url action="SalesDetail" />">Sales Detail</a></li>
+			</ul></li>
+		
+		<li><a href="">Report</a> <!-- sub menu for account -->
+			<ul>
 				<li><a href="<s:url action="ReportMain" />">Generate Report</a></li>
 				<li><a href="<s:url action="TimeRangeMain" />">Time Range</a></li>
 				<li><a href="<s:url action="TimeRangeBranch" />">Time Range Branch</a></li>
 				<li><a href="<s:url action="ProductReport" />">Product Report</a></li>
 				<li><a href="<s:url action="EmployeeReportCheck" />">Employee Report</a></li>
+				<li><a href="<s:url action="SearchEmployeeReport" />">Search Employee Report</a></li>
 			</ul></li>
 
 		<li><a href="<s:url action="Logout" />">Logout</a></li>
@@ -93,18 +102,44 @@
 			<ul>
 				
 				<li><a href="<s:url action="ProductList" />">Product List</a></li>
-				
+				<li><a href="<s:url action="StorageBranch" />">Storage Branch</a></li>
 			</ul></li>
 			
 		<li><a href="">Transaction</a> <!-- sub menu for account -->
 			<ul>
 				<li><a href="<s:url action="Supply" />">Supply</a></li>
 				<li><a href="<s:url action="Sales" />">Sales</a></li>
+				<li><a href="<s:url action="SalesDetail" />">Sales Detail</a></li>
+				<li><a href="<s:url action="BranchRefundDetail" />">Branch Refund Detail</a></li>
+			</ul></li>
+			
+		<li><a href="">Report</a> <!-- sub menu for account -->
+			<ul>				
+				<li><a href="<s:url action="TimeRangeBranch" />">Time Range Branch</a></li>
+				<li><a href="<s:url action="ProductReport" />">Product Report</a></li>
 				<li><a href="<s:url action="ReportEmployee" />">Report Employee</a></li>
+				<li><a href="<s:url action="SearchEmployeeReport" />">Search Employee Report</a></li>
 			</ul></li>
 
 		<li><a href="<s:url action="Logout" />">Logout</a></li>
 
+	</ul>
+</s:if> 
+
+<s:if test="Type == 'Salesman'">  
+	<ul class="my-dropdown-menu">
+		<li><a href="Salesman.jsp">Home</a></li>
+		<li><a href="">Transaction</a> <!-- sub menu for account -->
+			<ul>				
+				<li><a href="<s:url action="Sales" />">Sales</a></li>				
+			</ul>
+		</li>
+		<li><a href="">Product</a> <!-- sub menu for account -->
+			<ul>				
+				<li><a href="<s:url action="ProductList" />">Product List</a></li>
+				<li><a href="<s:url action="StorageBranch" />">Storage Branch</a></li>
+			</ul>
+		</li>
 	</ul>
 </s:if> 
 </body>

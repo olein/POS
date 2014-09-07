@@ -19,7 +19,9 @@ public class Supplier {
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try{
+			
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement = conn
 				.prepareStatement("insert into supplier(Name,Address,Description) values (?, ?, ?)");
 		// Parameters start with 1
@@ -28,16 +30,33 @@ public class Supplier {
 		preparedStatement.setString(3, Description);
 
 		preparedStatement.executeUpdate();
+		conn.commit();
 		conn.close();
 		
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String Update() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try{
+			
+		conn.setAutoCommit(false);
 		 PreparedStatement preparedStatement = conn
 					.prepareStatement("select * from supplier where SupplierID=?");
 			// Parameters start with 1
@@ -69,22 +88,55 @@ public class Supplier {
 			    preparedStatement1.executeUpdate();
 				
 			}
+			conn.commit();
 			conn.close();
 		
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String Delete() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
+		try{
+			
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement1 = conn
 				.prepareStatement("delete from supplier where SupplierID=?");
 		// Parameters start with 1
 		preparedStatement1.setInt(1, SupplierID);
 
 		preparedStatement1.executeUpdate();
+		conn.commit();conn.close();
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String SupplierList() throws SQLException

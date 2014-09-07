@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.util.Vector;
 
 public class Supply {
 	
@@ -17,12 +18,17 @@ public class Supply {
 	private int TotalBill;
 	private int BranchID;
 	private String Name;
+	private String BranchName;
+	private Vector<OutputBean> messages = new Vector<OutputBean>();
+	private Vector<OutputBean> storage = new Vector<OutputBean>();
 	
 	public String SupplyRegistration() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try{
+			
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement11 = conn
 				.prepareStatement("insert into supply (SupplierID, TotalAmount) values (?, 0)");
 		// Parameters start with 1
@@ -36,15 +42,32 @@ public class Supply {
 		{
 			TransactionID = rs.getInt(1);
 		}
+		conn.commit();
 		conn.close();
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String SupplyProduct() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try{
+			
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement11 = conn
 				.prepareStatement("select * from storage_main where ProductID=?");
 		// Parameters start with 1
@@ -86,9 +109,23 @@ public class Supply {
 			preparedStatement11.setInt(4, TotalPrice);
 			preparedStatement11.executeUpdate();
 		}
-				
+		conn.commit();		
 		conn.close();
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String CalculateBill() throws SQLException
@@ -96,7 +133,10 @@ public class Supply {
 		
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try
+		{
+			
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement111 = conn
 				.prepareStatement("select max(TransactionID) from transaction_supply_main");
 		// Parameters start with 1
@@ -125,14 +165,33 @@ public class Supply {
 			preparedStatement11.setInt(2, TransactionID);
 			preparedStatement11.executeUpdate();
 		}
-		return "success"; 	
+		conn.commit();
+		conn.close();
+		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String BranchRefund() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try
+		{
+			
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement11 = conn
 				.prepareStatement("insert into branchrefund (BranchID) values (?)");
 		// Parameters start with 1
@@ -146,15 +205,33 @@ public class Supply {
 		{
 			TransactionID = rs.getInt(1);
 		}
+		conn.commit();
 		conn.close();
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String BranchRefundProduct() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try
+		{
+			
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement10 = conn.prepareStatement("SELECT max(TransactionID) from branchrefund");
 		ResultSet rs = preparedStatement10.executeQuery();
 		while(rs.next())
@@ -237,6 +314,80 @@ public class Supply {
 			preparedStatement11.setInt(2, Quantity);
 			preparedStatement11.executeUpdate();
 		}
+		conn.commit();
+		conn.close();
+		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
+	}
+	
+	public String SupplyDetail() throws SQLException {
+		DataBase db = new DataBase();
+		Connection conn = db.connect();
+
+		PreparedStatement preparedStatement11 = conn
+				.prepareStatement("select * from supply");
+		// Parameters start with 1		
+
+		ResultSet rs = preparedStatement11.executeQuery();
+
+		while (rs.next()) {
+			OutputBean bean = new OutputBean();
+			bean.setDate(rs.getDate(2));
+			bean.setTransactionID(rs.getInt(1));
+			bean.setSupplierID(rs.getInt(4));
+			bean.setTotalPrice(rs.getInt(3));
+			messages.add(bean);
+		}
+		
+		preparedStatement11 = conn
+				.prepareStatement("select * from transaction_supply_main");
+		
+		rs = preparedStatement11.executeQuery();
+
+		while (rs.next()) {
+			OutputBean bean = new OutputBean();
+			bean.setTransactionID(rs.getInt(1));
+			bean.setProductID(rs.getInt(2));
+			bean.setQuantity(rs.getInt(3));
+			bean.setTotalPrice(rs.getInt(4));
+			storage.add(bean);
+		}
+		conn.close();
+		return "success";
+	}
+	
+	public String BranchRefundDetail() throws SQLException {
+		DataBase db = new DataBase();
+		Connection conn = db.connect();
+
+		PreparedStatement preparedStatement11 = conn
+				.prepareStatement("select a.TransactionID, a.ProductID, b.Name, a.Quantity from "+BranchName+"_transaction_supply as a, Product as b where a.ProductID=b.ProductID");
+		// Parameters start with 1		
+
+		ResultSet rs = preparedStatement11.executeQuery();
+
+		while (rs.next()) {
+			OutputBean bean = new OutputBean();
+			bean.setQuantity(rs.getInt(4));
+			bean.setTransactionID(rs.getInt(1));
+			bean.setProductID(rs.getInt(2));
+			bean.setName(rs.getString(3));
+			messages.add(bean);
+		}		
+		
 		conn.close();
 		return "success";
 	}
@@ -244,6 +395,22 @@ public class Supply {
 	public int getSupplierID() {
 		return SupplierID;
 	}
+	public Vector<OutputBean> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Vector<OutputBean> messages) {
+		this.messages = messages;
+	}
+
+	public Vector<OutputBean> getStorage() {
+		return storage;
+	}
+
+	public void setStorage(Vector<OutputBean> storage) {
+		this.storage = storage;
+	}
+
 	public void setSupplierID(int supplierID) {
 		SupplierID = supplierID;
 	}
@@ -304,6 +471,14 @@ public class Supply {
 
 	public void setName(String name) {
 		Name = name;
+	}
+
+	public String getBranchName() {
+		return BranchName;
+	}
+
+	public void setBranchName(String branchName) {
+		BranchName = branchName;
 	}
 	
 

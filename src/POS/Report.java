@@ -411,6 +411,31 @@ public class Report {
 		return "success";
 	}
 	
+	public String SearchReportEmployee() throws SQLException
+	{
+		DataBase db = new DataBase();
+		Connection conn = db.connect();
+		PreparedStatement preparedStatement = conn
+				.prepareStatement("select * from reportemployee where EmployeeID=?");
+		// Parameters start with 1
+		preparedStatement.setInt(1, EmployeeID);
+		ResultSet rs = preparedStatement.executeQuery();
+
+		while (rs.next()) {
+			OutputBean bean = new OutputBean();
+			
+			bean.setManagerID(rs.getInt(2));
+			bean.setReport(rs.getString(3));
+			bean.setDate(rs.getDate(4));
+			messages.add(bean);
+		}
+		
+		conn.close();
+		
+		return "success";
+	}
+
+	
 	public int getYear() {
 		return Year;
 	}

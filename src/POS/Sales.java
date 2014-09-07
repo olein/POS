@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,12 +24,18 @@ public class Sales {
 	private String BranchName;
 	private int TotalBill;
 	private String Type;
+	private Vector<OutputBean> messages = new Vector<OutputBean>();
+	private Vector<OutputBean> storage = new Vector<OutputBean>();
 	
 	public String SalesRegistration() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
+		try{
+			
+		conn.setAutoCommit(false);
+		Map session = ActionContext.getContext().getSession();
+		BranchName = (String) session.get("BN");
 		PreparedStatement preparedStatement11 = conn
 				.prepareStatement("insert into "+BranchName+"_transaction_sales (EmployeeID, TotalAmount) values (?, 0)");
 		// Parameters start with 1
@@ -36,20 +43,33 @@ public class Sales {
 		
 		preparedStatement11.executeUpdate();
 		
-		Map session = ActionContext.getContext().getSession();
-		session.put("BN", BranchName);
 		
+		conn.commit();
 		conn.close();
 		setType("Manager");
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String SalesProduct() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
-		
-		
+		try{
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement11 = conn
 				.prepareStatement("select * from "+BranchName+"_storage where ProductID=?");
 		// Parameters start with 1
@@ -99,9 +119,23 @@ public class Sales {
 			preparedStatement11.setInt(4, TotalPrice);
 			preparedStatement11.executeUpdate();
 		}
-				
+		conn.commit();		
 		conn.close();
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String CalculateBill() throws SQLException
@@ -112,7 +146,9 @@ public class Sales {
 		
 		Map session = ActionContext.getContext().getSession();
 		BranchName = (String) session.get("BN");
-		
+		try{
+			
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement111 = conn
 				.prepareStatement("select max(TransactionID) from "+BranchName+"_sales");
 		// Parameters start with 1
@@ -141,10 +177,60 @@ public class Sales {
 			preparedStatement11.setInt(2, TransactionID);
 			preparedStatement11.executeUpdate();
 		}
+		conn.commit();conn.close();
 		setType("Manager");
-		return "success"; 	
+		return "success"; 
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 
+	public String SalesDetail() throws SQLException {
+		DataBase db = new DataBase();
+		Connection conn = db.connect();
+
+		PreparedStatement preparedStatement11 = conn
+				.prepareStatement("select * from "+BranchName+"_transaction_sales");
+		// Parameters start with 1		
+
+		ResultSet rs = preparedStatement11.executeQuery();
+
+		while (rs.next()) {
+			OutputBean bean = new OutputBean();
+			bean.setDate(rs.getDate(4));
+			bean.setTransactionID(rs.getInt(1));
+			bean.setEmployeeID(rs.getInt(2));
+			bean.setTotalAmount(rs.getInt(3));
+			messages.add(bean);
+		}
+		
+		preparedStatement11 = conn
+				.prepareStatement("select * from "+BranchName+"_sales");
+		
+		rs = preparedStatement11.executeQuery();
+
+		while (rs.next()) {
+			OutputBean bean = new OutputBean();
+			bean.setTransactionID(rs.getInt(1));
+			bean.setProductID(rs.getInt(2));
+			bean.setQuantity(rs.getInt(3));
+			bean.setTotalPrice(rs.getInt(4));
+			storage.add(bean);
+		}
+		conn.close();
+		return "success";
+	}
 	
 	public int getTransactionID() {
 		return TransactionID;
@@ -195,6 +281,22 @@ public class Sales {
 
 	public String getType() {
 		return Type;
+	}
+
+	public Vector<OutputBean> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Vector<OutputBean> messages) {
+		this.messages = messages;
+	}
+
+	public Vector<OutputBean> getStorage() {
+		return storage;
+	}
+
+	public void setStorage(Vector<OutputBean> storage) {
+		this.storage = storage;
 	}
 
 	public void setType(String type) {

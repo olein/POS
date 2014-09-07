@@ -15,6 +15,7 @@
   	  <action name="Login" class="POS.Login" method="Login"> 
            <result name="Main manager">/MainManager.jsp</result>
            <result name="Manager">/Manager.jsp</result>
+           <result name="Salesman">/Salesman.jsp</result>
            <result name="failure">/index.jsp</result>
       </action>
   	  
@@ -159,6 +160,14 @@
            <result name="success">/ProductList.jsp</result>
       </action>
       
+      <action name="StorageMain" class="POS.Product" method="StorageMain"> 
+           <result name="success">/StorageMain.jsp</result>
+      </action>
+      
+      <action name="StorageBranch" class="POS.Product" method="StorageBranch"> 
+           <result name="success">/StorageBranch.jsp</result>
+      </action>
+      
       <action name="Supply"> 
            <result>/Supply.jsp</result>
       </action>
@@ -187,6 +196,18 @@
            <result name="success">/BranchRefundProduct.jsp</result>
       </action>
       
+      <action name="SupplyDetail" class="POS.Supply" method="SupplyDetail"> 
+           <result name="success">/SupplyDetail.jsp</result>
+      </action>
+      
+      <action name="BranchRefundDetail"> 
+           <result>/BranchRefundDetail.jsp</result>
+      </action>
+      
+      <action name="BranchRefundDetailAction" class="POS.Supply" method="BranchRefundDetail"> 
+           <result name="success">/ShowBranchRefundDetail.jsp</result>
+      </action>
+      
       <action name="Sales"> 
            <result>/Sales.jsp</result>
       </action>
@@ -201,6 +222,14 @@
       
       <action name="CustomerCalculateBill" class="POS.Sales" method="CalculateBill"> 
            <result name="success">/CustomerShowBill.jsp</result>
+      </action>
+      
+      <action name="SalesDetail"> 
+           <result>/SalesDetail.jsp</result>
+      </action>
+      
+      <action name="SalesDetailAction" class="POS.Sales" method="SalesDetail"> 
+           <result name="success">/ShowSalesDetail.jsp</result>
       </action>
       
       <action name="ReportMain"> 
@@ -253,6 +282,14 @@
       
       <action name="EmployeeReportCheck" class="POS.Report" method="EmployeeReportCheck"> 
            <result name="success">/EmployeeReportCheck.jsp</result>
+      </action>
+      
+      <action name="SearchReportEmployee"> 
+           <result>/SearchReportEmployee.jsp</result>
+      </action>
+      
+      <action name="SearchReportEmployeeAction" class="POS.Report" method="SearchReportEmployee"> 
+           <result name="success">/SearchEmployeeReport.jsp</result>
       </action>
       
       <action name="Logout" class="POS.Logout" method="logout"> 

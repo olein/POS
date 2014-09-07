@@ -19,6 +19,8 @@ public class Employee {
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
+		try{
+		conn.setAutoCommit(false);		
 		PreparedStatement preparedStatement = conn
 				.prepareStatement("insert into employee(Name,Address,Type,Salary,Password) values (?, ?,?,?,?)");
 		// Parameters start with 1
@@ -29,15 +31,32 @@ public class Employee {
 		preparedStatement.setString(5, Password);
 
 		preparedStatement.executeUpdate();
+		conn.commit();
 		conn.close();
 		setType("Main manager");
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String Update() throws SQLException
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
+		try{
+		conn.setAutoCommit(false);	
 		
 		PreparedStatement preparedStatement = conn
 				.prepareStatement("select * from employee where EmployeeID=?");
@@ -80,9 +99,24 @@ public class Employee {
 		    preparedStatement1.executeUpdate();
 			
 		}
+		conn.commit();
 		conn.close();
 		setType("Main manager");
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String Delete() throws SQLException
@@ -90,8 +124,8 @@ public class Employee {
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
 		
-		
-		
+		try{
+		conn.setAutoCommit(false);
 		PreparedStatement preparedStatement = conn
 				.prepareStatement("select * from employee where EmployeeID=?");
 		// Parameters start with 1
@@ -118,8 +152,24 @@ public class Employee {
 		preparedStatement1.setInt(1, EmployeeID);
 
 		preparedStatement1.executeUpdate();
+		conn.commit();
+		conn.close();
 		setType("Main manager");
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
 	}
 	
 	public String EmployeeList() throws SQLException
@@ -154,6 +204,8 @@ public class Employee {
 	{
 		DataBase db = new DataBase();
 		Connection conn = db.connect();
+		try{
+		conn.setAutoCommit(false);	
 		
 		PreparedStatement preparedStatement = conn
 				.prepareStatement("select Type from employee where EmployeeID=?");
@@ -161,10 +213,11 @@ public class Employee {
 		preparedStatement.setInt(1, EmployeeID);
 
 		ResultSet rs = preparedStatement.executeQuery();
-		
-		Type = rs.getString(6);
-		
-		if(Type.equals("Main Manager") || Type.equals("Manager"))
+		while(rs.next())
+		{
+			Type = rs.getString(1);
+		}
+		if(Type.equals("Main manager") || Type.equals("Manager"))
 		{
 			PreparedStatement preparedStatement1 = conn
 					.prepareStatement("update branch set ManagerID=? where BranchID=?");
@@ -180,9 +233,25 @@ public class Employee {
 		preparedStatement1.setInt(2, EmployeeID);
 		preparedStatement1.setInt(1, BranchID);
 		preparedStatement1.executeUpdate();
+		conn.commit();
 		conn.close();
 		setType("Main manager");
 		return "success";
+		}
+		catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		      // If there is an error then rollback the changes.
+		      System.out.println("Rolling back data here....");
+			  try{
+				 if(conn!=null)
+		            conn.rollback();
+		      }catch(SQLException se2){
+		         se2.printStackTrace();
+		      }
+			  return "failure";
+		}
+		
 	}
 	public String getName() {
 		return Name;

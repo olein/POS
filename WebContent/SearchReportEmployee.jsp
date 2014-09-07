@@ -6,7 +6,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="<s:url value="style_result.css"/>"/> 
-<title>Create New Account</title>
+<title>Update Branch</title>
 
 
 </head>
@@ -16,11 +16,12 @@
  <br></br>
 <div  align="center">
 <div id="select1">
- <b>Please Enter required information:</b><br/><br/>
+ <b>Please Enter Branch ID and Update Necessary Information:</b><br/><br/>
  
- <s:form action = "SalesAction">
-
-  	  <s:textfield name="EmployeeID"  label ="Employee ID"/>  	  
+ <s:form action = "SearchReportEmployeeAction">
+ 
+	  <s:textfield name="EmployeeID"  label ="Employee ID"/>  	  
+  	  
       <s:submit/>
 
  </s:form>
